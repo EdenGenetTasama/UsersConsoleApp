@@ -131,10 +131,32 @@ namespace UsersConsoleApp
             }
         }
 
-         static void Update(int v, StreamWriter writeToUserFile, string[] arrayOfStrings)
+
+        //throw new NotImplementedException();
+        static void Update(int number, StreamWriter writeToFile, string[] array)
         {
-            throw new NotImplementedException();
+            switch (number)
+            {
+                case 0:
+                    writeToFile.Write($"{array[0] = Console.ReadLine()} {array[1]} {array[2]} {array[3]}");
+                    break;
+                case 1:
+                    writeToFile.Write($"{array[0]} {array[1] = Console.ReadLine()} {array[2]} {array[3]}");
+                    break;
+                case 2:
+                    writeToFile.Write($"{array[0]} {array[1]} {array[2] = Console.ReadLine()} {array[3]}");
+                    break;
+                case 3:
+                    writeToFile.Write($"{array[0]} {array[1]} {array[2]} {array[3] = Console.ReadLine()}");
+                    break;
+                default:
+                    Update(number, writeToFile, array);
+                    break;
+            }
         }
+
+
+
 
         static void DeleteUser(string fileName) => File.Delete(fileName);
 
